@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "explorer" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "explorer" ]
 
 jobs:
 
@@ -13,13 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      name: Check out code
-      
-    - uses: mr-smithers-excellent/docker-build-push@v5
-      name: Build & push Docker image
-      with:
-        image: tegexplore/pda-2022
-        registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
