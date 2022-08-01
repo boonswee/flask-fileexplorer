@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: file-explorer
-        image: 
+        image: tegexplore/pda-2022:main-8cca576
         ports:
         - containerPort: 80
       imagePullSecrets:
